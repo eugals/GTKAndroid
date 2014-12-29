@@ -1,0 +1,45 @@
+Short version for non-lawyers:
+
+The GTK+Android Project is dual-licensed under Apache 2.0 
+and MIT terms.
+
+Longer version:
+
+The GTK+Android Project is copyright 2014, The GTK+Android
+Project Developers (given in the file AUTHORS.txt).
+
+Licensed under the Apache License, Version 2.0
+<LICENSE-APACHE or
+http://www.apache.org/licenses/LICENSE-2.0> or the MIT
+license <LICENSE-MIT or http://opensource.org/licenses/MIT>,
+at your option. All files in the project carrying such
+notice may not be copied, modified, or distributed except
+according to those terms.
+
+
+The GTK+Android Project is based on packages written by third 
+parties. The following third party packages are included, 
+and carry their own copyright notices and license terms:
+
+
+* GTK+, GLib, Pango, GDK-Pixbuf, ATK and their sub-packages
+  All of them are licensed under LGPL 2.0 terms.
+  Please see http://www.gnome.org/ for more details.
+
+
+* Cairo and Pixman libraries belong to http://cairographics.org/
+  and licensed under LGPL 2.1 or MPL 1.1 licenses both.
+
+* LibFFI belongs to Red Hat, Inc and others.
+  It is placed to Public Domain.
+  Please see the sources for the details.
+
+* FontConfig belongs to many contributors
+  It is placed to Public Domain.
+  Please see the sources for the details.
+
+* FreeType belongs to many contributors
+  and licensed under BSD-like or GPL 2.0 licenses at your choice
+
+* harfbuzz belongs to many contributors
+  It is licensed under "Old MIT" license

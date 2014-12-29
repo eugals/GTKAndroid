@@ -1,0 +1,33 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 21
+    buildToolsVersion "20.0.0"
+
+    defaultConfig {
+        applicationId "org.p2lang.gtkandroid"
+        minSdkVersion 15
+        targetSdkVersion 21
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+        }
+        debug {
+            jniDebuggable true
+        }
+    }
+
+    sourceSets.main {
+        jniLibs.srcDir 'libs'
+        manifest.srcFile 'AndroidManifest.xml'
+        // adding gtk.css and other ndk-build non-*.so artifacts
+        assets.srcDirs = [assets.srcDirs, "libs/assets"]
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+}
