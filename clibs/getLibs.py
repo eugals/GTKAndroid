@@ -13,6 +13,7 @@
 
 import os, os.path, re
 import tarfile, subprocess
+import time
 try:
     # Python 2+
     from urllib2 import urlopen
@@ -68,6 +69,7 @@ class LibDownloader(object):
                 os.makedirs(os.path.split(destPath)[0])
             print ("Extractting library snapshot to %s" % destPath)
             self.xtractTar(archFileName)
+            time.sleep(0.5) # wait a bit, to let Windows release all the necessary directory locks
             os.rename(os.path.join(EXTLIBS_PATH, extractedDirName), destPath)
 
 
