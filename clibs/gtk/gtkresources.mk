@@ -11,7 +11,7 @@
 # Author(s): Evgeny Sologubov
 #
 
-GTK_CSS_SRC := $(call my-dir)/distsrc/gtk/resources/theme/gtk-default.css
+GTK_CSS_SRC := $(call my-dir)/distsrc/gtk/resources/theme/Raleigh/gtk-default.css
 GTK_CSS_DST := $(NDK_APP_LIBS_OUT)/assets/share/themes/Android/gtk-3.0/gtk.css
 
 installed_modules: $(GTK_CSS_DST)

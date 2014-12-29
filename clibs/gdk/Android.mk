@@ -25,7 +25,7 @@ GDK_ANDROID_SOURCES := gdkwindow-android.c  gdkevents-android.c \
 GDK_ANDROID_SOURCES := $(addprefix ../../../gdk/, $(GDK_ANDROID_SOURCES))
 
 LOCAL_MODULE:= gdk
-LOCAL_SRC_FILES:= $(GDK_ANDROID_SOURCES) $(filter %.c, $(am__libgdk_3_la_SOURCES_DIST))
+LOCAL_SRC_FILES:= $(GDK_ANDROID_SOURCES) $(gdk_c_sources) gdkenumtypes.c gdkmarshalers.c
 LOCAL_EXPORT_LDLIBS := -llog
 LOCAL_CFLAGS += -DNVALGRIND=1 -DGDK_COMPILATION=1 $(CAIRO_CFLAGS)
 LOCAL_C_INCLUDES := $(MAKEFILE_PATH) $(MAKEFILE_PATH)/include $(MAKEFILE_PATH)/include/gdk $(MAKEFILE_PATH)/../gtk \

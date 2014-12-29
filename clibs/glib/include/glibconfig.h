@@ -140,7 +140,7 @@ typedef unsigned __int64 guintptr;
 #define g_memmove(dest,src,len) G_STMT_START { memmove ((dest), (src), (len)); } G_STMT_END
 
 #define GLIB_MAJOR_VERSION 2
-#define GLIB_MINOR_VERSION 40
+#define GLIB_MINOR_VERSION 43
 #define GLIB_MICRO_VERSION 2
 
 #define __GCC_HAVE_SYNC_COMPARE_AND_SWAP_4 1

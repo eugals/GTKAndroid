@@ -195,7 +195,7 @@ def run():
                 "platform_external_libffi-android-4.4.4_r2.0.1")
 
     # glib, gobject, gio
-    dl.download("glib/distsrc", "http://ftp.gnome.org/pub/gnome/sources/glib/2.40/glib-2.40.2.tar.xz")
+    dl.download("glib/distsrc", "http://ftp.gnome.org/pub/gnome/sources/glib/2.43/glib-2.43.2.tar.xz")
     makeVariablesFile("glib/distsrc/glib/Makefile.in", "glib/distsrc/glib/Sources.mk",
                       ["@OS_UNIX_TRUE@am__append_16",
                        "@THREADS_POSIX_TRUE@@THREADS_WIN32_FALSE@am__append_18",
@@ -226,14 +226,14 @@ def run():
                       ["libpango_1_0_la_SOURCES", "pango_headers", "pangoft2_public_sources", "pangocairo_core_sources"])
 
     # atk
-    dl.download("atk/distsrc", "http://ftp.gnome.org/pub/gnome/sources/atk/2.13/atk-2.13.90.tar.xz")
+    dl.download("atk/distsrc", "http://ftp.gnome.org/pub/gnome/sources/atk/2.15/atk-2.15.3.tar.xz")
     makeVariablesFile("atk/distsrc/atk/Makefile.in", "atk/distsrc/atk/Sources.mk",
                       ["atk_sources",
                        "libatk_1_0_la_SOURCES",
                        "atk_headers"])
 
     # gdk-pixbuf
-    dl.download("gdk-pixbuf/distsrc", "http://ftp.gnome.org/pub/gnome/sources/gdk-pixbuf/2.31/gdk-pixbuf-2.31.1.tar.xz")
+    dl.download("gdk-pixbuf/distsrc", "http://ftp.gnome.org/pub/gnome/sources/gdk-pixbuf/2.31/gdk-pixbuf-2.31.2.tar.xz")
     makeVariablesFile("gdk-pixbuf/distsrc/gdk-pixbuf/Makefile.in", "gdk-pixbuf/distsrc/gdk-pixbuf/Sources.mk",
                       ["libgdk_pixbuf_2_0_la_SOURCES"])
     makeVariablesFile("gdk-pixbuf/distsrc/configure", "gdk-pixbuf/distsrc/Config.mk",
@@ -241,16 +241,16 @@ def run():
                        "GDK_PIXBUF_VERSION", "GDK_PIXBUF_API_VERSION", "GDK_PIXBUF_BINARY_VERSION"])
 
     # gtk & gdk
-    dl.download("gtk/distsrc", "http://ftp.gnome.org/pub/gnome/sources/gtk+/3.12/gtk+-3.12.2.tar.xz")
+    dl.download("gtk/distsrc", "http://ftp.gnome.org/pub/gnome/sources/gtk+/3.14/gtk+-3.14.6.tar.xz")
     makeVariablesFile("gtk/distsrc/gtk/Makefile.in", "gtk/distsrc/gtk/Sources.mk",
                       ["am__libgtk_3_la_SOURCES_DIST"])
     makeVariablesFile("gtk/distsrc/configure", "gtk/distsrc/Config.mk",
                       ["GTK_MAJOR_VERSION", "GTK_MINOR_VERSION", "GTK_MICRO_VERSION",
                        "GTK_BINARY_AGE", "GTK_VERSION", "GTK_API_VERSION", "GTK_BINARY_VERSION"])
     makeVariablesFile("gtk/distsrc/gdk/Makefile.in", "gtk/distsrc/gdk/Sources.mk",
-                      ["am__libgdk_3_la_SOURCES_DIST"])
-    makeVariablesFile("gtk/distsrc/gtk/a11y/Makefile.in", "gtk/distsrc/gtk/a11y/Sources.mk",
-                      ["gtka11y_c_sources"])
+                      ["deprecated_c_sources", "gdk_c_sources", "gdk_built_sources", "common_sources"])
+    makeVariablesFile("gtk/distsrc/gtk/inspector/Makefile.in", "gtk/distsrc/gtk/inspector/Sources.mk",
+                      ["libgtkinspector_la_SOURCES"])
 
     # freetype, fontconfig, harfbuzz
     dl.download("freetype/distsrc", "http://download.savannah.gnu.org/releases/freetype/freetype-2.5.4.tar.bz2") 

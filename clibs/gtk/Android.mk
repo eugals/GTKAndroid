@@ -18,7 +18,7 @@ LOCAL_PATH:= $(GTK_SOURCES_PATH)/gtk
 include $(CLEAR_VARS)
 
 include $(LOCAL_PATH)/Sources.mk
-include $(LOCAL_PATH)/a11y/Sources.mk
+include $(LOCAL_PATH)/inspector/Sources.mk
 include $(GTK_SOURCES_PATH)/Config.mk
 
 GTK_ANDROID_SOURCES := gtkainit.c gtkadummyobject.c gtkcssprovider_hack.c gtkandroidassets.c
@@ -26,7 +26,7 @@ GTK_ANDROID_SOURCES := $(addprefix $(MAKEFILE_PATH)/, $(GTK_ANDROID_SOURCES))
 
 GTK_SOURCES = $(GTK_ANDROID_SOURCES) \
               gtkwin32theme.c gtkcssimagewin32.c  \
-              $(addprefix a11y/, $(gtka11y_c_sources)) \
+              $(filter %.c, $(addprefix inspector/, $(libgtkinspector_la_SOURCES))) \
               $(filter-out gtkmountoperation% gtkprintoperation% \
                            gtkcssprovider.c \
                            gtkplug.c gtksocket.c gtkxembed.c \

@@ -36,7 +36,7 @@ unix_sources := gfiledescriptorbased.c                  \
 
 
 GIO_SOURCES := $(filter-out gthread-posix.c glocaldirectorymonitor.c, $(libgio_2_0_la_SOURCES)) \
-               $(addprefix xdgmime/, $(libxdgmime_la_SOURCES)) \
+               $(addprefix xdgmime/, $(libxdgmime_la_SOURCES))  \
                $(MAKEFILE_PATH)/giodummyobjects.c
 GIO_SOURCES := $(filter %.c, $(GIO_SOURCES))
 
