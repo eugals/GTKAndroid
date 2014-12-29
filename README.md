@@ -19,4 +19,4 @@ Known issues/limitations of this 0.1alpha version:
 - No soft keyboard support yet
 
 - `cairo` may crash on certain operations when `Android NDK r10d (64-bit)` is used.
-  `Android NDK r10c` works fine 
+  `Android NDK r10c (64-bit)` works fine 
