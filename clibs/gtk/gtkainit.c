@@ -14,6 +14,8 @@
 
 #include "config.h"
 
+#include <stdlib.h>
+
 #include <jni.h>
 
 #include <android/sensor.h>
@@ -61,7 +63,7 @@ char *setlocale(int category, const char *locale)
 ///////////////////////////////////////////////////////////////////////////////////
 // window event handlers & initialization
 
-void (*default_gtk_window_class_constructed)(GObject *object) = NULL;
+static void (*default_gtk_window_class_constructed)(GObject *object) = NULL;
 
 void android_gtk_window_class_constructed(GObject *object)
 {
@@ -90,8 +92,21 @@ static gtk_window_tweak_class()
 {
     GObjectClass *objClass = G_OBJECT_CLASS(g_type_class_ref(GTK_TYPE_WINDOW));
 
-    default_gtk_window_class_constructed = objClass->constructed;
-    objClass->constructed = android_gtk_window_class_constructed;
+    if (objClass->constructed != android_gtk_window_class_constructed)
+    {
+        default_gtk_window_class_constructed = objClass->constructed;
+        objClass->constructed = android_gtk_window_class_constructed;
+    }
+}
+
+static void (*defaultActivityDestroyHandler)(ANativeActivity* activity) = NULL;
+
+static void onActivityDestroy(ANativeActivity* activity)
+{
+    // wait until the native_app is detached
+    defaultActivityDestroyHandler(activity);
+    // and kill this process
+    exit(0);
 }
 
 ///////////////////////////////////////////////////////////////////////////////////
@@ -117,4 +132,31 @@ void gtk_android_init(struct android_app *state)
 
     // g_object_get(settings, "gtk-font-name", &font_name, NULL);
     adjust_default_font();
+}
+
+void gtk_android_exit(struct android_app *state)
+{
+    int ident;
+    int events;
+    struct android_poll_source* source;
+
+    // replace onDestroy handler to terminate the process AFTER everything is unloaded
+    if (!defaultActivityDestroyHandler)
+    {
+        defaultActivityDestroyHandler = state->activity->callbacks->onDestroy;
+        state->activity->callbacks->onDestroy = onActivityDestroy;
+    }
+
+    ANativeActivity_finish(state->activity);
+
+    while (!state->destroyRequested)
+    {
+        // Read all pending events.
+        while ((ident = ALooper_pollAll(0, NULL, &events, (void**)&source)) >= 0)
+        {
+            // Process this event.
+            if (source != NULL)
+                source->process(state, source);
+        }
+    }
 }

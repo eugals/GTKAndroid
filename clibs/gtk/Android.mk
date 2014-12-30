@@ -22,7 +22,7 @@ include $(LOCAL_PATH)/a11y/Sources.mk
 include $(GTK_SOURCES_PATH)/Config.mk
 
 GTK_ANDROID_SOURCES := gtkainit.c gtkadummyobject.c gtkcssprovider_hack.c gtkandroidassets.c
-GTK_ANDROID_SOURCES := $(addprefix $(MAKEFILE_PATH)/, $(GTK_ANDROID_SOURCES))
+GTK_ANDROID_SOURCES := $(addprefix ../../, $(GTK_ANDROID_SOURCES))
 
 GTK_SOURCES = $(GTK_ANDROID_SOURCES) \
               gtkwin32theme.c gtkcssimagewin32.c  \

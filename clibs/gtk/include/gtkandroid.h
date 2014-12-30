@@ -22,4 +22,7 @@
 // instead of *gtk_init* which would be used on other platforms
 void gtk_android_init(struct android_app *state);
 
+// Finished the activity and makes sure it is properly unloaded
+void gtk_android_exit(struct android_app *state);
+
 #endif // __GTK_ANDROID_H__

@@ -79,6 +79,7 @@ void android_main(struct android_app *state)
 
     gtk_main();
 
-    ANativeActivity_finish(state->activity);
+    // Finish the activity and makes sure it is properly unloaded
+    gtk_android_exit(state);
 }
 
