@@ -174,11 +174,14 @@ void gdk_android_handle_glue_cmd(struct android_app* app, int32_t cmd)
             }
             break;
         case APP_CMD_TERM_WINDOW:
-            gdk_android_term_display();
+            if (gdk_android_stop)
+                gdk_android_stop();
             break;
+        case APP_CMD_PAUSE:
         case APP_CMD_STOP:
             if (gdk_android_stop)
                 gdk_android_stop();
+            break;
         case APP_CMD_GAINED_FOCUS:
             // When our app gains focus, we start monitoring the accelerometer.
             if (accelerometerSensor != NULL)
