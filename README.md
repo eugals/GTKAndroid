@@ -17,6 +17,3 @@ Known issues/limitations of this 0.1alpha version:
 - Only "C" locale is supported by `libc` on Android
 
 - No soft keyboard support yet
-
-- `cairo` may crash on certain operations when `Android NDK r10d (64-bit)` is used.
-  `Android NDK r10c (64-bit)` works fine 

@@ -48,6 +48,11 @@ LOCAL_MODULE    := cairo
 LOCAL_CFLAGS    := -O2 $(LIBCAIRO_CFLAGS) -I$(PIXMAN_SOURCES_PATH)/pixman \
                    -I$(CAIRO_SOURCES_PATH)/src -I$(MAKEFILE_PATH)/cairo-extra \
                    -I$(MAKEFILE_PATH)/pixman-extra -Wno-missing-field-initializers
+
+# remove the following line once NDK updates it's GCC to a version
+# with this fix https://gcc.gnu.org/bugzilla/show_bug.cgi?id=56982
+LOCAL_CFLAGS    += -fno-tree-dominator-opts
+
 LOCAL_SRC_FILES := cairo/util/cairo-gobject/cairo-gobject-enums.c \
                    cairo/util/cairo-gobject/cairo-gobject-structs.c \
                    $(addprefix pixman/pixman/, $(libpixman_sources)) \
