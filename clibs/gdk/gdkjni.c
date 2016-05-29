@@ -99,4 +99,5 @@ gboolean gdk_android_adjust_with_jni(GdkAndroidScreen *scr, GdkAndroidDisplay *d
     jni->DeleteLocalRef(pjni, wm);
     jni->DeleteLocalRef(pjni, cacheDir);
     (*act->vm)->DetachCurrentThread(act->vm);
+    return TRUE;
 }

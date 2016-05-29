@@ -150,6 +150,7 @@ gboolean gdk_android_init_screen(GdkAndroidScreen *scr, ANativeActivity *act, GE
 {
     scr->visual = gdk_android_visual_new(scr);
     scr->root_window = _gdk_windowing_window_init(&scr->screen);
+    return TRUE;
 }
 
 GdkWindow *_gdk_android_root(void)
