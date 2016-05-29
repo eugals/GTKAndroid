@@ -354,7 +354,7 @@ static void generate_motion_event(GdkEventType type, AInputEvent *aevent, GdkEve
         ev->button.x_root = ev->button.x;
         ev->button.y_root = ev->button.y;
         ev->button.window = _gdk_android_find_window_for_screen_pos(&ev->button.x, &ev->button.y);
-        ev->button.time = AMotionEvent_getEventTime(aevent);
+        ev->button.time = AMotionEvent_getEventTime(aevent) / 1000000;
     }
     g_object_ref(ev->button.window);
     ev->button.axes = NULL;
@@ -380,7 +380,7 @@ GdkEvent *create_crossing_event(GdkEventType type, AInputEvent *aevent)
     ev->crossing.y_root = ev->crossing.y;
     ev->crossing.window = _gdk_android_find_window_for_screen_pos(&ev->crossing.x, &ev->crossing.y);
     g_object_ref(ev->crossing.window);
-    ev->crossing.time = AMotionEvent_getEventTime(aevent);
+    ev->crossing.time = AMotionEvent_getEventTime(aevent) / 1000000; //android time is in nanoseconds
     gdk_event_set_device(ev, devManager->pointer);
     //gdk_event_set_source_device(event, device_manager->system_pointer);
 
