@@ -32,7 +32,7 @@ class LibDownloader(object):
 
 
     def __init__(self):
-        """*GnomeLibDownloader* instance constructor"""
+        """*LibDownloader* instance constructor"""
         self.xtractTarXZ = None
         for method in (self.xtractWithLZMA, self.xtractWith7Zip, self.xtractWithTarX):
             if method():
@@ -41,7 +41,7 @@ class LibDownloader(object):
 
 
     def download(self, name, url, libFullName = None):
-        """Download, extracts and prepares for building the library specified"""
+        """Downloads, extracts and prepares for building the library specified"""
 
         ext = os.path.splitext(url)[-1]
         assert ext in (".xz", ".gz", ".bz2")
@@ -120,7 +120,7 @@ class LibDownloader(object):
 
 
     def xtractWithTarX(self, inputName = None):
-        """Either attempts to extract *inputName* with 7z.exe
+        """Either attempts to extract *inputName* with *tar* utility
            or just checks if such an extraction is possible within the environment
         """
         if inputName is None:
