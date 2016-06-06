@@ -17,6 +17,8 @@
 #include "config.h"
 #include <stdlib.h>
 
+#include <android_native_app_glue.h>
+
 #include "gdk.h"
 #include "gdkwindowimpl.h"
 #include "gdkprivate-android.h"
@@ -800,14 +802,24 @@ static void gdk_android_window_unstick(GdkWindow *window)
 
 static void gdk_android_window_maximize(GdkWindow *window)
 {
+    ARect *arect;
+
     g_return_if_fail(GDK_IS_WINDOW(window));
     if (GDK_WINDOW_DESTROYED(window))
         return;
 
-    gdk_window_move_resize(window, 0, _gdk_display->notificationBarHeight,
-                           gdk_screen_get_width(&_gdk_screen->screen),
-                           gdk_screen_get_height(&_gdk_screen->screen)
-                           - _gdk_display->notificationBarHeight);
+    // arect contains the Java application content rectangle which respects: 
+    // notification area, system button bar, and a default window header.
+    // Our window wouldn't have any header, so we ignore arect->top and 
+    // only use are arect->bottom to find out where the system button bar begins,
+    // because there is not way to get such information from GL context
+    arect = &_gdk_display->app->contentRect;
+
+    gdk_window_move_resize(window, 
+                           arect->left, 
+                           _gdk_display->notificationBarHeight,
+                           arect->right - arect->left, 
+                           arect->bottom - _gdk_display->notificationBarHeight);
 }
 
 static void gdk_android_window_unmaximize(GdkWindow *window)

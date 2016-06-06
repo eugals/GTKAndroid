@@ -219,7 +219,7 @@ static void onNativeWindowRedrawNeeded(ANativeActivity* activity, ANativeWindow*
 static void onContentRectChanged(ANativeActivity* activity, const ARect* rect) {
     g_info("ContentRectChanged: %p -- (%d,%d)-(%d,%d)\n", activity, rect->left,
            rect->top, rect->right, rect->bottom);
-    //android_app_set_content_rect((struct android_app*)activity->instance, rect);
+    ((struct android_app*)activity->instance)->contentRect = *rect;
 }
 
 void gdk_android_setup_app_callbacks(struct android_app *state, void (*onStop)())
