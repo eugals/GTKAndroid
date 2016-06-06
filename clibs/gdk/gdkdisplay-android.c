@@ -1,6 +1,6 @@
 // Copyright 2014 The GTK+Android Developers. See the COPYRIGHT
 // file at the top-level directory of this distribution and at
-// http://p2lang.org/COPYRIGHT.
+// https://github.com/eugals/GTKAndroid/wiki/COPYRIGHT.
 //
 // Licensed under the Apache License, Version 2.0 <LICENSE-APACHE or
 // http://www.apache.org/licenses/LICENSE-2.0> or the MIT license
@@ -48,7 +48,7 @@ G_DEFINE_TYPE(GdkAndroidDisplay, gdk_android_display, GDK_TYPE_DISPLAY)
 
 static gulong gdk_android_display_get_next_serial(GdkDisplay *display)
 {
-	return 0;
+    return 0;
 }
 
 static const gchar *gdk_android_display_get_name(GdkDisplay *display)
@@ -75,7 +75,7 @@ static gboolean gdk_android_display_supports_selection_notification(GdkDisplay *
 }
 
 static gboolean gdk_android_display_request_selection_notification(GdkDisplay *display,
-						                                           GdkAtom     selection)
+                                                                   GdkAtom     selection)
 
 {
     return FALSE;
@@ -87,10 +87,10 @@ static gboolean gdk_android_display_supports_clipboard_persistence(GdkDisplay *d
 }
 
 static void gdk_android_display_store_clipboard(GdkDisplay    *display,
-			                                    GdkWindow     *clipboard_window,
-			                                    guint32        time_,
-			                                    const GdkAtom *targets,
-			                                    gint           n_targets)
+                                                GdkWindow     *clipboard_window,
+                                                guint32        time_,
+                                                const GdkAtom *targets,
+                                                gint           n_targets)
 {
 }
 
@@ -189,7 +189,7 @@ static void gdk_android_display_push_error_trap(GdkDisplay *display)
 }
 
 static gint gdk_android_display_pop_error_trap(GdkDisplay *display,
-				                               gboolean    ignored)
+                                               gboolean    ignored)
 {
     return 0;
 }
