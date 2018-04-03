@@ -88,7 +88,7 @@ static void adjust_default_font()
     }
 }
 
-static gtk_window_tweak_class()
+static void gtk_window_tweak_class()
 {
     GObjectClass *objClass = G_OBJECT_CLASS(g_type_class_ref(GTK_TYPE_WINDOW));
 
@@ -117,8 +117,6 @@ static void onActivityDestroy(ANativeActivity* activity)
 // instead of *gtk_init* which would be used on other platforms
 void gtk_android_init(struct android_app *state)
 {
-    app_dummy(); // Make sure glue isn't stripped.
-
     _gtk_android_glue_app = state;
 
     g_log_set_default_handler(log_handler, NULL);

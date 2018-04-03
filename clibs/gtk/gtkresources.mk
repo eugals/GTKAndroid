@@ -19,5 +19,5 @@ installed_modules: $(GTK_CSS_DST)
 $(call generate-file-dir,$(GTK_CSS_DST))
 
 $(GTK_CSS_DST): clean-installed-binaries
-    $(hide) $(call host-install,$(GTK_CSS_SRC),$(GTK_CSS_DST))
+	$(hide) $(call host-install,$(GTK_CSS_SRC),$(GTK_CSS_DST))
 

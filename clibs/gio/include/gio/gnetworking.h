@@ -19,6 +19,9 @@
 #ifndef __G_NETWORKING_H__
 #define __G_NETWORKING_H__
 
+// don't let this header be included because glib/distsrc/gio/gthreadedresolver.c has a copy of that thing
+#define _ARPA_NAMESER_H_
+
 #include <glib.h>
 
 #ifdef G_OS_WIN32
@@ -46,8 +49,8 @@
 #include <sys/un.h>
 #include <net/if.h>
 
-#include <arpa/inet.h>
-#include <arpa/nameser.h>
+//#include <arpa/inet.h>
+//#include <arpa/nameser.h>
 //#include <arpa/nameser_compat.h>
 
 #ifndef T_SRV

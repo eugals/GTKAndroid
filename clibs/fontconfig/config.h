@@ -349,7 +349,7 @@
 /* #undef inline */
 #endif
 
-#include <machine/endian.h>
+//#include <machine/endian.h>
 #ifdef __LP64__
 #   define SIZEOF_VOID_P 8
 #   define ALIGNOF_DOUBLE 8
