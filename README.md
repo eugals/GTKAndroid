@@ -1,3 +1,7 @@
+The current code base [**DOESN'T WORK**](https://github.com/eugals/GTKAndroid/issues/3) on the modern `NDK` versions. The last *known* version it did work with was [`r10`](https://developer.android.com/ndk/downloads/older_releases.html).
+Some attempts to solve this incompatibility are hopefully introduced in this repo's clones here on GitHub.
+
+
 GTKAndroid
 ==========
 
