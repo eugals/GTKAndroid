@@ -67,7 +67,7 @@ class LibDownloader(object):
         else:
             if not os.path.exists(os.path.split(destPath)[0]):
                 os.makedirs(os.path.split(destPath)[0])
-            print ("Extractting library snapshot to %s" % destPath)
+            print ("Extracting library snapshot to %s" % destPath)
             self.xtractTar(archFileName)
             time.sleep(0.5) # wait a bit, to let Windows release all the necessary directory locks
             os.rename(os.path.join(EXTLIBS_PATH, extractedDirName), destPath)
@@ -253,7 +253,7 @@ def run():
                       ["gtka11y_c_sources"])
 
     # freetype, fontconfig, harfbuzz
-    dl.download("freetype/distsrc", "http://download.savannah.gnu.org/releases/freetype/freetype-2.5.4.tar.bz2") 
+    dl.download("freetype/distsrc", "https://download.savannah.gnu.org/releases/freetype/freetype-old/freetype-2.5.4.tar.bz2") 
     dl.download("fontconfig/distsrc", "http://www.freedesktop.org/software/fontconfig/release/fontconfig-2.11.1.tar.bz2") 
     makeVariablesFile("fontconfig/distsrc/src/Makefile.in", "fontconfig/distsrc/src/Makefile.sources",
                       ["libfontconfig_la_SOURCES"])
@@ -262,7 +262,7 @@ def run():
                       ["HBSOURCES"])
 
     # cairo & pixman
-    print ("Please be aware that downloading files from cairographics.org can take REALLY LONG TIME (up to 10-15 minutes)")
+    print ("Please be aware that downloading files from cairographics.org can take REALLY LONG TIME (up to 20-25 minutes)")
     dl.download("cairo/distsrc/cairo", "http://cairographics.org/releases/cairo-1.14.0.tar.xz")
     dl.download("cairo/distsrc/pixman", "http://cairographics.org/releases/pixman-0.32.6.tar.gz")
 
