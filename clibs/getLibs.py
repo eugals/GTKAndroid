@@ -80,7 +80,26 @@ class LibDownloader(object):
             return self.xtractTarXZ(inputName)
         tarName = os.path.join(EXTLIBS_PATH, inputName)
         with tarfile.open(tarName, mode = "r:*") as tarf:
-            tarf.extractall(EXTLIBS_PATH)
+            def is_within_directory(directory, target):
+                
+                abs_directory = os.path.abspath(directory)
+                abs_target = os.path.abspath(target)
+            
+                prefix = os.path.commonprefix([abs_directory, abs_target])
+                
+                return prefix == abs_directory
+            
+            def safe_extract(tar, path=".", members=None, *, numeric_owner=False):
+            
+                for member in tar.getmembers():
+                    member_path = os.path.join(path, member.name)
+                    if not is_within_directory(path, member_path):
+                        raise Exception("Attempted Path Traversal in Tar File")
+            
+                tar.extractall(path, members, numeric_owner=numeric_owner) 
+                
+            
+            safe_extract(tarf, EXTLIBS_PATH)
 
     
     def xtractWithLZMA(self, inputName = None):
@@ -95,7 +114,26 @@ class LibDownloader(object):
             return True
         tarName = os.path.join(EXTLIBS_PATH, inputName)
         with tarfile.open(tarName, mode = "r:xz") as tarf:
-            tarf.extractall(EXTLIBS_PATH)
+            def is_within_directory(directory, target):
+                
+                abs_directory = os.path.abspath(directory)
+                abs_target = os.path.abspath(target)
+            
+                prefix = os.path.commonprefix([abs_directory, abs_target])
+                
+                return prefix == abs_directory
+            
+            def safe_extract(tar, path=".", members=None, *, numeric_owner=False):
+            
+                for member in tar.getmembers():
+                    member_path = os.path.join(path, member.name)
+                    if not is_within_directory(path, member_path):
+                        raise Exception("Attempted Path Traversal in Tar File")
+            
+                tar.extractall(path, members, numeric_owner=numeric_owner) 
+                
+            
+            safe_extract(tarf, EXTLIBS_PATH)
 
 
     def xtractWith7Zip(self, inputName = None):
@@ -115,7 +153,26 @@ class LibDownloader(object):
             raise ValueError(stderrData)
         tarName = os.path.join(EXTLIBS_PATH, inputName.rstrip(".xz"))
         with tarfile.open(tarName) as tarf:
-            tarf.extractall(EXTLIBS_PATH)
+            def is_within_directory(directory, target):
+                
+                abs_directory = os.path.abspath(directory)
+                abs_target = os.path.abspath(target)
+            
+                prefix = os.path.commonprefix([abs_directory, abs_target])
+                
+                return prefix == abs_directory
+            
+            def safe_extract(tar, path=".", members=None, *, numeric_owner=False):
+            
+                for member in tar.getmembers():
+                    member_path = os.path.join(path, member.name)
+                    if not is_within_directory(path, member_path):
+                        raise Exception("Attempted Path Traversal in Tar File")
+            
+                tar.extractall(path, members, numeric_owner=numeric_owner) 
+                
+            
+            safe_extract(tarf, EXTLIBS_PATH)
         os.unlink(tarName)
 
 
